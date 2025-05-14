@@ -200,25 +200,28 @@ https://templatemo.com/tm-516-known
 
 
 <script>
-const token = "TU_TOKEN_AQUI"; // Reemplaza con tu token real
+const token = "r3diTgSrNKM5pp4QbxPFUOnU8YbMHaFW";
 
-function fetchBlynkData() {
-    fetch(`https://blynk.cloud/external/api/get?token=${token}&V1`)
-        .then(res => res.text())
-        .then(data => document.getElementById("temp").textContent = data);
-
-    fetch(`https://blynk.cloud/external/api/get?token=${token}&V0`)
-        .then(res => res.text())
-        .then(data => document.getElementById("hum").textContent = data);
-
-    fetch(`https://blynk.cloud/external/api/get?token=${token}&V4`)
-        .then(res => res.text())
-        .then(data => document.getElementById("gas").textContent = data);
+async function fetchSensor(pin, elementId) {
+    try {
+        const res = await fetch(`https://blynk.cloud/external/api/get?token=${token}&${pin}`);
+        const data = await res.text();
+        document.getElementById(elementId).textContent = data;
+    } catch (e) {
+        document.getElementById(elementId).textContent = "Error";
+    }
 }
 
-setInterval(fetchBlynkData, 5000);
-fetchBlynkData();
+function actualizarSensores() {
+    fetchSensor("V1", "temp"); // Temperatura
+    fetchSensor("V0", "hum");  // Humedad
+    fetchSensor("V4", "gas");  // Gas
+}
+
+setInterval(actualizarSensores, 5000);
+window.onload = actualizarSensores;
 </script>
+
 
 <!-- ABOUT -->
 <section id="about">
@@ -701,6 +704,7 @@ fetchBlynkData();
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
+     <script src="js/realtime.js"></script>
 
 
 </body>
