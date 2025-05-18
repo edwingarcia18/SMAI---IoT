@@ -169,58 +169,7 @@ https://templatemo.com/tm-516-known
     </div>
 </section>
 
-<!-- SECCIÓN DE DATOS EN TIEMPO REAL -->
-<section id="realtime" style="background-color:#ececec; padding: 40px 0;">
-  <div class="container">
-    <div class="section-title text-center">
-      <h2>Datos en Tiempo Real <small>Obtenidos desde Blynk Cloud</small></h2>
-    </div>
-    <div class="row align-items-center">
 
-      <!-- Columna de imagen responsiva -->
-      <div class="col-md-6 col-sm-12 mb-4 mb-md-0 text-center">
-        <div style="max-width: 80%; height: auto;">
-          <img src="images/1author-image10.png" alt="Dispositivo IoT" 
-               style="width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); object-fit: contain;">
-        </div>
-      </div>
-
-      <!-- Columna de datos -->
-      <div class="col-md-6 col-sm-12">
-        <div class="card" style="padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff;">
-          <p><strong>🌡 Temperatura:</strong> <span id="temp">--</span> °C</p>
-          <p><strong>💧 Humedad:</strong> <span id="hum">--</span> %</p>
-          <p><strong>🔥 Gas:</strong> <span id="gas">--</span> ppm</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<script>
-const token = "r3diTgSrNKM5pp4QbxPFUOnU8YbMHaFW";
-
-async function fetchSensor(pin, elementId) {
-    try {
-        const res = await fetch(`https://blynk.cloud/external/api/get?token=${token}&${pin}`);
-        const data = await res.text();
-        document.getElementById(elementId).textContent = data;
-    } catch (e) {
-        document.getElementById(elementId).textContent = "Error";
-    }
-}
-
-function actualizarSensores() {
-    fetchSensor("V1", "temp"); // Temperatura
-    fetchSensor("V0", "hum");  // Humedad
-    fetchSensor("V4", "gas");  // Gas
-}
-
-setInterval(actualizarSensores, 5000);
-window.onload = actualizarSensores;
-</script>
 
 
 <!-- ABOUT -->
