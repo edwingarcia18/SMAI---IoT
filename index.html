@@ -77,16 +77,28 @@ https://templatemo.com/tm-516-known
                          <li><a href="#contact" class="smoothScroll">Plano IoT</a></li>
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                         <li>
-                              <a href="#">
-                              <img src="images/logo-universidad.png" alt="Universidad" style="height:38px; vertical-align:middle;">
-                              </a>
-                          </li>
-                    </ul>
+               <ul class="nav navbar-nav navbar-right">
+               <li>
+                    <a href="#">
+                         <img src="images/logo-universidad.png" alt="Universidad" style="height:38px; vertical-align:middle;">
+                    </a>
+               </li>
+               <li>
+                    <a href="#">
+                         <img src="images/logo uts.png" alt="Logo UTS" style="height:38px; vertical-align:middle;">
+                    </a>
+               </li>
+               <li>
+                    <a href="#">
+                         <img src="images/logo uts2.png" alt="Logo UTS 2" style="height:38px; vertical-align:middle;">
+                    </a>
+               </li>
+               </ul>
+
 
                </div>
 
+               
           </div>
      </section>
 
@@ -126,7 +138,7 @@ https://templatemo.com/tm-516-known
                                    <div class="container">
                                         <div class="col-md-6 col-sm-12">
                                              <h1>Proyecto IoT Supervisión ambiental en tiempo real</h1>
-                                             <h3> Transformamos datos ambientales en información útil a través de un ecosistema IoT bien conectado.<a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> page.</h3>
+                                             <h3> Transformamos datos ambientales en información útil a través de un ecosistema IoT bien conectado.<a rel="nofollow" href="https://www.facebook.com/templatemo"></a> </h3>
                                              <a href="#contact" class="section-btn btn btn-default smoothScroll">Plano IoT</a>
                                         </div>
                                    </div>
@@ -169,7 +181,64 @@ https://templatemo.com/tm-516-known
     </div>
 </section>
 
+<!-- SECCIÓN DE DATOS EN TIEMPO REAL -->
+<section id="realtime" style="background-color:#ececec; padding: 40px 0;">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Datos en Tiempo Real <small>Obtenidos desde Blynk Cloud</small></h2>
+    </div>
+    <div class="row align-items-center">
 
+      <!-- Columna de imagen responsiva -->
+      <div class="col-md-6 col-sm-12 mb-4 mb-md-0 text-center">
+        <div style="max-width: 80%; height: auto;">
+          <img src="images/1author-image10.png" alt="Dispositivo IoT" 
+               style="width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); object-fit: contain;">
+        </div>
+      </div>
+
+      <!-- Columna de datos -->
+      <div class="col-md-6 col-sm-12">
+        <div class="card" style="padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); background-color: #ffffff;">
+          <p><strong>🌡 Temperatura:</strong> <span id="temp">--</span> °C</p>
+          <p><strong>💧 Humedad:</strong> <span id="hum">--</span> %</p>
+          <p><strong>🔥 Gas:</strong> <span id="gas">--</span> ppm</p>
+        </div>
+
+  <!-- Botón de actualización manual -->
+  <div style="text-align: center; margin-top: 20px;">
+    <button onclick="actualizarSensores()" style="padding: 10px 20px; font-size: 16px; background-color: #BFD630; border: none; border-radius: 5px; color: white; cursor: pointer;">
+      Actualizar datos
+    </button>
+  </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+const token = "RvRRX1wSQq8I30_IB-zVd64b54Kz4qRW";
+
+async function fetchSensor(pin, elementId) {
+    try {
+        const res = await fetch(`https://blynk.cloud/external/api/get?token=${token}&${pin}`);
+        const data = await res.text();
+        document.getElementById(elementId).textContent = data;
+    } catch (e) {
+        document.getElementById(elementId).textContent = "Error";
+    }
+}
+
+function actualizarSensores() {
+    fetchSensor("V1", "temp"); // Temperatura
+    fetchSensor("V0", "hum");  // Humedad
+    fetchSensor("V4", "gas");  // Gas
+}
+
+
+</script>
 
 
 <!-- ABOUT -->
@@ -595,56 +664,64 @@ https://templatemo.com/tm-516-known
  
 
 
-     <!-- FOOTER -->
-     <footer id="footer">
-          <div class="container">
-               <div class="row">
+<!-- VIDEO DE PRESENTACIÓN -->
+<section id="video-presentacion" style="text-align:center; padding: 60px 20px; background-color: #f8f8f8;">
+    <div class="container">
+        <h2>Video de Presentación del Proyecto SMAI</h2>
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;">
+            <iframe src="https://www.youtube.com/embed/XN-nlE22c6s" 
+                    frameborder="0" allowfullscreen 
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;">
+            </iframe>
+        </div>
+    </div>
+</section>
 
-                    <div class="col-md-4 col-sm-6">
-                         <div class="footer-info">
-                              <div class="section-title">
-                                   <h2>Edwin Alonso García Fuentes</h2>
-                              </div>
-                              <address>
-                                   <p>E-mail: ealonsogarcia@uts.edu.co<br></p>
-                              </address>
+    <!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
 
-
-
-                         </div>
+            <!-- Columna izquierda -->
+            <div class="col-md-6 col-sm-12">
+                <div class="footer-info">
+                    <div class="section-title">
+                        <h2>UNIDADES TECNOLÓGICAS DE SANTANDER - UTS</h2>
                     </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="footer-info">
-                              <div class="section-title">
-                                   <h2>Osman Jhair Gómez Suárez</h2>
-                              </div>
-                              <address>
-                                   <p>E-mail: ojhairgomez@uts.edu.co</p>
-                                   <p><a href="mailto:youremail.co"></a></p>
-                              </address>
-
-                              <div class="footer_menu">
-                                   <h2>UNIDADES TECNOLÓGICAS DE SANTANDER - UTS</h2>
-
-                              </div>
-                         </div>
+                    <div class="section-title">
+                        <h2>Tecnología en Gestión de Sistemas de Telecomunicaciones</h2>
                     </div>
-
-                    <div class="col-md-4 col-sm-12">
-                         <div class="footer-info newsletter-form">
-                              <div class="section-title">
-                                   <h2>Tecnología en Gestión de Sistemas de Telecomunicaciones</h2>
-                              </div>
-                              <div>
-                                 
-                              </div>
-                         </div>
+                    <div class="section-title">
+                        <h2>Laboratorio Dispositivos Programables-IoT E-161 / 2025</h2>
                     </div>
-                    
-               </div>
-          </div>
-     </footer>
+                </div>
+            </div>
+
+            <!-- Columna derecha -->
+            <div class="col-md-6 col-sm-12">
+                <div class="footer-info">
+                    <div class="section-title">
+                        <h2>Edwin Alonso García Fuentes</h2>
+                        <p><strong>Estudiante</strong></p>
+                        <p>E-mail: ealonsogarcia@uts.edu.co</p>
+                    </div>
+                    <div class="section-title">
+                        <h2>Osman Jhair Gómez Suárez</h2>
+                        <p><strong>Estudiante</strong></p>
+                        <p>E-mail: ojhairgomez@uts.edu.co</p>
+                    </div>
+                    <div class="section-title">
+                        <h2>Edward Yesith Mendoza González</h2>
+                        <p><strong>Docente</strong></p>
+                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
 
 
      <!-- SCRIPTS -->
